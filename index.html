@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T&C Appliance HVAC - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { background-color: #f8f9fa; }
+    .card:hover { transform: scale(1.02); transition: 0.3s ease; }
+    .fx-fade { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Welcome to T&C Appliance HVAC Repair</h1>
+    <p class="lead text-center mb-5">Explore our two locations and find the service center nearest you.</p>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-5">
+        <div class="card shadow fx-fade">
+          <div class="card-body">
+            <h5 class="card-title">Burlington Location</h5>
+            <p class="card-text">Serving Burlington and surrounding areas with expert appliance and HVAC repair services.</p>
+            <a href="burlington/" class="btn btn-primary">Visit Burlington Site</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card shadow fx-fade">
+          <div class="card-body">
+            <h5 class="card-title">Durham Location</h5>
+            <p class="card-text">HVAC and appliance repair experts based in Durham County, ready to help you.</p>
+            <a href="durham/" class="btn btn-primary">Visit Durham Site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const faders = document.querySelectorAll('.fx-fade');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+    faders.forEach(fade => observer.observe(fade));
+  </script>
+</body>
+</html>
