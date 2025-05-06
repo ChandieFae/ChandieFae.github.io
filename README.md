@@ -25,9 +25,6 @@ An associated archive serving Durham County with expert repair insights and serv
 
 ## 🔒 Ownership & Purpose
 
-This RWS platform is maintained by **Chandie Fae** to preserve, protect, and present her digital work without third-party limitations.
+This RWS platform is maintained by **Chandra Brown** to preserve, protect her work
 
-- No redirects
-- No CMS dependencies
-- Just pure, clean, archived HTML
 
