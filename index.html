@@ -1,422 +1,463 @@
-```html
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chandra's Digital Archive</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body { 
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      font-family: 'Segoe UI', sans-serif;
-      min-height: 100vh;
-      padding:  2rem 0;
-    }
-    . main-container {
-      background: white;
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow:  0 20px 60px rgba(0,0,0,0.3);
-    }
-    .card {
-      border: none;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-    .card:hover { 
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .section-title {
-      font-weight: 600;
-      color:  #667eea;
-      margin-top: 2.5rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid #667eea;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    }
-    .hero {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .hero h1 {
-      font-weight: 700;
-      color: #2d3748;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      color: #718096;
-      font-size:  1.2rem;
-    }
-    .card-title {
-      color: #2d3748;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .card-text {
-      color: #718096;
-      font-size: 0.9rem;
-    }
-    .badge-custom {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 0.3rem 0.6rem;
-      border-radius:  5px;
-      font-size: 0.75rem;
-      font-weight:  500;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChandieFae | Portfolio & Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        : root {
+            --primary:  #6366f1;
+            --secondary:  #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:  linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        . container {
+            max-width:  1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom:  20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        /* Section Headers */
+        . section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size:  2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content:  center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            border: 2px solid var(--primary);
+            color:  var(--primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top:  40px;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.6);
+            border:  1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        . project-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        . project-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+            text-decoration:  underline;
+        }
+
+        /* External Links Section */
+        .external-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .external-link {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration:  none;
+            color: var(--light);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .external-link:hover {
+            border-color: var(--primary);
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        . external-link h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        . external-link p {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--gray);
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size:  1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            . projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="main-container">
-      
-      <!-- Hero Section -->
-      <div class="hero">
-        <h1>✨ Chandra's Digital Archive ✨</h1>
-        <p class="lead">Welcome to my organized collection of projects, businesses, and creative work. </p>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>ChandieFae</h1>
+        <p>Developer | Entrepreneur | Creator</p>
+    </section>
 
-      <!-- Business Sites Section -->
-      <h2 class="section-title">🏢 Business Sites</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">T&C Appliance HVAC Repair</h5>
-              <p class="card-text">Burlington Location<br><small class="text-muted">tcappliancehvac.com</small></p>
-              <a href="https://tcappliancehvac.com" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Visit Site →</a>
+    <!-- Business Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">T&C Appliance & HVAC Repair</h2>
+            <p class="section-subtitle">Professional appliance and HVAC repair services</p>
+            
+            <!-- Business Social Links -->
+            <div class="social-links">
+                <a href="https://www.pinterest.com/tcappliancehvac/" target="_blank" rel="noopener noreferrer" class="social-link" title="Pinterest">📌</a>
+                <a href="https://www.instagram.com/tcappliancehvac/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">📸</a>
+                <a href="https://www.facebook.com/serviceprofessional1/" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">👥</a>
+                <a href="https://www.linkedin.com/in/tandc-appliance-hvac-repair-270022144" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">💼</a>
+                <a href="https://www.youtube.com/@tcappliancehvacrepair" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube Main">🎥</a>
+                <a href="https://www.youtube.com/@tcappliancerepairman" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube Alt">📺</a>
+                <a href="https://www.tiktok.com/@tcappliancehvacre" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok">🎵</a>
             </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">T&C Appliance HVAC Repair Durham</h5>
-              <p class="card-text">Durham Location<br><small class="text-muted">tcappliancerepairman.com</small></p>
-              <a href="https://tcappliancerepairman.com" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Visit Site →</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Business & SEO Tools -->
-      <h2 class="section-title">🔧 Business & SEO Tools</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">RWS T&C Appliance HVAC Repair</h5>
-              <p class="card-text">Related Website Sets configuration for T&C Appliance HVAC Repair business network</p>
-              <a href="https://github.com/ChandieFae/rws-tcappliancehvacrepair" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
+            <!-- Business External Links -->
+            <div class="external-links" style="margin-top: 50px;">
+                <a href="https://www.tcappliancehvacrepair.com/" target="_blank" rel="noopener noreferrer" class="external-link">
+                    <h3>🔧 T&C Appliance & HVAC Repair</h3>
+                    <p>Professional appliance and HVAC repair services</p>
+                </a>
+                <a href="https://genius-ai.pro/" target="_blank" rel="noopener noreferrer" class="external-link">
+                    <h3>🧬 Genius AI Pro</h3>
+                    <p>AI-powered solutions and services</p>
+                </a>
+                <a href="https://visionculturemedia.com/" target="_blank" rel="noopener noreferrer" class="external-link">
+                    <h3>📱 Vision Culture Media</h3>
+                    <p>Digital media and creative services</p>
+                </a>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">RWS Config</h5>
-              <p class="card-text">Related Website Sets configuration manager</p>
-              <a href="https://github.com/ChandieFae/rws-config" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">T&C Genius Hub</h5>
-              <p class="card-text">Central hub for T&C business tools and resources</p>
-              <a href="https://github.com/ChandieFae/tc-genius-hub" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">SEO Platform</h5>
-              <p class="card-text">Search engine optimization tools and utilities</p>
-              <a href="https://github.com/ChandieFae/SEO-Platform" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Schema Markup Generator</h5>
-              <p class="card-text">Generate structured data for better SEO</p>
-              <a href="https://github.com/ChandieFae/schema-markup-generator" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Recap Validator</h5>
-              <p class="card-text">Validation tool for recap data</p>
-              <a href="https://github.com/ChandieFae/recap-validator" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Tag Hero <span class="badge-custom">Python</span></h5>
-              <p class="card-text">Python-based tag management system</p>
-              <a href="https://github.com/ChandieFae/tag_hero. py" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Tag Shield <span class="badge-custom">Python</span></h5>
-              <p class="card-text">Tag protection and validation tool</p>
-              <a href="https://github.com/ChandieFae/tag_shield.py" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Health & Bio Tech -->
-      <h2 class="section-title">🧬 Health & Bio Tech</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-12">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">GeniusDNA <span class="badge-custom">AI-Powered</span></h5>
-              <p class="card-text">AI-powered bio-optimization engine that parses raw DNA data and returns personalized longevity protocols based on genetic markers</p>
-              <a href="https://github.com/ChandieFae/GeniusDNA" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
+            <!-- Business Projects -->
+            <div class="projects-grid" style="margin-top: 50px;">
+                <div class="project-card">
+                    <h3>rws-tcappliancehvacrepair</h3>
+                    <p>Related Website Sets configuration for T&C business network - manages cross-site cookie permissions and data sharing between business properties</p>
+                    <a href="https://github.com/ChandieFae/rws-tcappliancehvacrepair" class="project-link">View on GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <h3>rws-config</h3>
+                    <p>Related Website Sets configuration manager - centralized control system for managing RWS declarations and policies</p>
+                    <a href="https://github.com/ChandieFae/rws-config" class="project-link">View on GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <h3>tc-genius-hub</h3>
+                    <p>Central hub for T&C business tools and resources - unified dashboard for business operations and analytics</p>
+                    <a href="https://github.com/ChandieFae/tc-genius-hub" class="project-link">View on GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <h3>SEO-Platform</h3>
+                    <p>Comprehensive search engine optimization tools and utilities - automated SEO auditing, keyword research, and optimization recommendations</p>
+                    <a href="https://github.com/ChandieFae/SEO-Platform" class="project-link">View on GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <h3>schema-markup-generator</h3>
+                    <p>Schema Markup Generator and SEO Local + SERP Ranking</p>
+                    <a href="https://github.com/ChandieFae/schema-markup-generator" class="project-link">View on GitHub →</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Creative & Interactive Projects -->
-      <h2 class="section-title">🎨 Creative & Interactive Projects</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Soul Clips App</h5>
-              <p class="card-text">Creative video clipping and editing application</p>
-              <a href="https://github.com/ChandieFae/soul_clips_app" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Genius Pixel Play</h5>
-              <p class="card-text">Interactive pixel art and creative playground</p>
-              <a href="https://github.com/ChandieFae/genius-pixel-play" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Interactive Bible Story:  Jonah</h5>
-              <p class="card-text">Interactive storytelling experience about Jonah and the big fish</p>
-              <a href="https://github.com/ChandieFae/Interactive-bible-story-jonah-and-the-big-fish" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Interactive Bible Story</h5>
-              <p class="card-text">General interactive Bible storytelling platform</p>
-              <a href="https://github.com/ChandieFae/interactive-bible-story" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="divider"></div>
 
-      <!-- Web & Network Tools -->
-      <h2 class="section-title">🌐 Web & Network Tools</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Carolina Bandwidth</h5>
-              <p class="card-text">Bandwidth monitoring and network analysis tool</p>
-              <a href="https://github.com/ChandieFae/Carolina-Bandwidth" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Global Signal Network</h5>
-              <p class="card-text">Global network signaling and communication system</p>
-              <a href="https://github.com/ChandieFae/global-signal-network" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">FaeSwap</h5>
-              <p class="card-text">Image Creation and Swap features</p>
-              <a href="https://github.com/ChandieFae/FaeSwap" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Personal Projects Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Personal Projects</h2>
+            <p class="section-subtitle">Software, AI, and creative experiments</p>
 
-      <!-- Developer Tools & Utilities -->
-      <h2 class="section-title">🛠️ Developer Tools & Utilities</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Node.js Publish Kit</h5>
-              <p class="card-text">Tools for publishing Node.js packages</p>
-              <a href="https://github.com/ChandieFae/nodejs-publish-kit" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
+            <!-- Personal Social -->
+            <div class="social-links">
+                <a href="https://www.facebook.com/chandra.brown. 9/" target="_blank" rel="noopener noreferrer" class="social-link" title="Facebook">👤</a>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Node.js Test Package</h5>
-              <p class="card-text">Testing framework for Node.js projects</p>
-              <a href="https://github.com/ChandieFae/node-js-test-package" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Chrome Tiger</h5>
-              <p class="card-text">Chrome extension or browser tool</p>
-              <a href="https://github.com/ChandieFae/Chrome-Tiger" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Secure by Design</h5>
-              <p class="card-text">Security-focused development framework</p>
-              <a href="https://github.com/ChandieFae/secure-by-design" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Chrome Related Website Sets</h5>
-              <p class="card-text">Implementation of Chrome's Related Website Sets</p>
-              <a href="https://github.com/ChandieFae/related-website-sets" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Learning & Education -->
-      <h2 class="section-title">📚 Learning & Education</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">ASL Alphabet Learning Tool</h5>
-              <p class="card-text">Interactive tool for learning American Sign Language alphabet</p>
-              <a href="https://github.com/ChandieFae/asl-alphabet-learning-tool" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Getting Started with GitHub Copilot</h5>
-              <p class="card-text">Learning resources for GitHub Copilot</p>
-              <a href="https://github.com/ChandieFae/skills-getting-started-with-github-copilot" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+            <!-- Personal Projects Grid -->
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>GeniusDNA</h3>
+                    <p>An AI-powered bio-optimization engine that parses your raw DNA data (e.g., 23andMe) and returns personalized longevity protocols based on key genetic markers (SNPs).</p>
+                    <a href="https://github.com/ChandieFae/GeniusDNA" class="project-link">View on GitHub →</a>
+                </div>
 
-      <!-- Calculators & Utilities -->
-      <h2 class="section-title">🧮 Calculators & Utilities</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Tile and Perimeter Calculator</h5>
-              <p class="card-text">Calculate tile requirements and perimeter measurements</p>
-              <a href="https://github.com/ChandieFae/tile-and-perimeter-calculator" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Dividend Flow Commander</h5>
-              <p class="card-text">Manage and track dividend investments</p>
-              <a href="https://github.com/ChandieFae/dividend-flow-commander" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div class="project-card">
+                    <h3>soul_clips_app</h3>
+                    <p>A next-gen app that lets people record memories, emotions, affirmations, or music — and then turn them into scannable tattoos.</p>
+                    <a href="https://github.com/ChandieFae/soul_clips_app" class="project-link">View on GitHub →</a>
+                </div>
 
-      <!-- Filters & Moderation -->
-      <h2 class="section-title">🛡️ Filters & Moderation</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Negativity Filter</h5>
-              <p class="card-text">Content filtering tool for negative sentiment</p>
-              <a href="https://github.com/ChandieFae/negativity_filter" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
+                <div class="project-card">
+                    <h3>genius-pixel-play</h3>
+                    <p>The core interactive audio suite within the G-PAD system.  Designed for expression, creativity, and play, it features real-time tone interaction, sound-reactive stickers, and the mystical G-Wiz glyph.</p>
+                    <a href="https://github.com/ChandieFae/genius-pixel-play" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>FaeSwap</h3>
+                    <p>Text to image and animation generator with facial mapping</p>
+                    <a href="https://github.com/ChandieFae/FaeSwap" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>dividend-flow-commander</h3>
+                    <p>Track, manage, and control your dividend income with customizable tools.  Works across any brokerage. </p>
+                    <a href="https://github.com/ChandieFae/dividend-flow-commander" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>tag_shield. py</h3>
+                    <p>Scans for external scripts, flags known trackers, respects allowlist, and highlights unlisted third-party connections.</p>
+                    <a href="https://github.com/ChandieFae/tag_shield.py" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>tag_hero. py</h3>
+                    <p>Audit your stack.  Fix broken tags. Reclaim your digital power.</p>
+                    <a href="https://github.com/ChandieFae/tag_hero.py" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>negativity_filter</h3>
+                    <p>This tool is designed to detect and flag negative or accusatory content in reviews, feedback, or other user-generated text. </p>
+                    <a href="https://github.com/ChandieFae/negativity_filter" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>recap-validator</h3>
+                    <p>Validate and clean Autodesk-related URLs</p>
+                    <a href="https://github.com/ChandieFae/recap-validator" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>secure-by-design</h3>
+                    <p>A dedicated work browser built for clarity, control, and context. Microsoft Edge for Business separates personal and professional browsing with enterprise-grade security — all secure by design.</p>
+                    <a href="https://github.com/ChandieFae/secure-by-design" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Carolina-Bandwidth</h3>
+                    <p>The AI Processing Supernode.  Foundation of an extensible, high-throughput system designed to ingest, process, and serve large-scale multimodal data using cutting-edge AI.  Features ultra-fast data ingestion & transformation, modular support for LLMs, audio, image, and video models, local-first + hybrid cloud edge deployment, built for real bandwidth limits.</p>
+                    <a href="https://github.com/ChandieFae/Carolina-Bandwidth" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>global-signal-network</h3>
+                    <p>A repository of intentional geographic coordinates — signal points — distributed across the Earth.  Allows contributors to submit meaningful signal points, generates maps, and provides a lightweight, flexible dataset for data visualizations or research.</p>
+                    <a href="https://github.com/ChandieFae/global-signal-network" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>asl-alphabet-learning-tool</h3>
+                    <p>Made to help keep ASL accessible and free. </p>
+                    <a href="https://github.com/ChandieFae/asl-alphabet-learning-tool" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Chrome-Tiger</h3>
+                    <p>Chrome extension and browser automation tool - enhances browser functionality and productivity</p>
+                    <a href="https://github.com/ChandieFae/Chrome-Tiger" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>related-website-sets</h3>
+                    <p>Implementation of Chrome's Related Website Sets standard - reference implementation for RWS specification</p>
+                    <a href="https://github.com/ChandieFae/related-website-sets" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>nodejs-publish-kit</h3>
+                    <p>Tools for publishing Node.js packages - automated npm publishing workflow with version management</p>
+                    <a href="https://github.com/ChandieFae/nodejs-publish-kit" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>node-js-test-package</h3>
+                    <p>Testing framework for Node.js projects - comprehensive test suite and CI/CD integration</p>
+                    <a href="https://github.com/ChandieFae/node-js-test-package" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Interactive-bible-story-jonah-and-the-big-fish</h3>
+                    <p>Interactive storytelling experience about Jonah and the big fish - engaging educational tool for children</p>
+                    <a href="https://github.com/ChandieFae/Interactive-bible-story-jonah-and-the-big-fish" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>interactive-bible-story</h3>
+                    <p>General interactive Bible storytelling platform - framework for creating engaging biblical narratives</p>
+                    <a href="https://github.com/ChandieFae/interactive-bible-story" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>tile-and-perimeter-calculator</h3>
+                    <p>Calculate tile requirements and perimeter measurements - helps estimate materials for flooring and tiling projects</p>
+                    <a href="https://github.com/ChandieFae/tile-and-perimeter-calculator" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>H-A-R-E</h3>
+                    <p>Human Abduction Response Emergency - Emergency response and alert system for critical situations</p>
+                    <a href="https://github.com/ChandieFae/H-A-R-E" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>jekyll-doc</h3>
+                    <p>Documentation site built with Jekyll static site generator - clean, organized technical documentation</p>
+                    <a href="https://github.com/ChandieFae/jekyll-doc" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>skills-getting-started-with-github-copilot</h3>
+                    <p>GitHub's official tutorial and learning resources for getting started with GitHub Copilot</p>
+                    <a href="https://github.com/ChandieFae/skills-getting-started-with-github-copilot" class="project-link">View on GitHub →</a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">H. A.R.E</h5>
-              <p class="card-text">Specialized filtering or analysis tool</p>
-              <a href="https://github.com/ChandieFae/H-A-R-E" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    </section>
 
-      <!-- Documentation -->
-      <h2 class="section-title">📖 Documentation</h2>
-      <div class="row g-4 mb-4">
-        <div class="col-md-12">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Jekyll Documentation</h5>
-              <p class="card-text">Documentation site built with Jekyll static site generator</p>
-              <a href="https://github.com/ChandieFae/jekyll-doc" class="btn btn-outline-primary btn-sm" target="_blank">View Code →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="text-center mt-5 pt-4" style="border-top: 2px solid #e2e8f0;">
-        <p class="text-muted">
-          <small>Built with ❤️ by Chandra | All projects available on <a href="https://github.com/ChandieFae" target="_blank" style="color: #667eea;">GitHub</a></small>
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min. js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ChandieFae. Built with passion and code.</p>
+    </footer>
 </body>
 </html>
-```
