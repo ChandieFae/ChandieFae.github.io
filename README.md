@@ -92,12 +92,10 @@ ChandieFae.github.io/
 ## 🔗 Connect
 
 ### Business
-- 🌐 [T&C Appliance & HVAC Repair](https://www.tcappliancehvacrepair.com/)
+-
 - 🧬 [Genius AI Pro](https://genius-ai.pro/)
 - 📱 [Vision Culture Media](https://visionculturemedia.com/)
-- 💼 [LinkedIn](https://www.linkedin.com/in/tandc-appliance-hvac-repair-270022144)
-- 📸 [Instagram](https://www.instagram.com/tcappliancehvac/)
-- 🎥 [YouTube](https://www.youtube.com/@tcappliancehvacrepair)
+- 
 
 ### Personal
 - 👤 [Facebook](https://www.facebook.com/chandra.brown. 9/)
